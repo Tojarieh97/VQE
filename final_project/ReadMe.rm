@@ -1,0 +1,10 @@
+In this folder, you can find the implementation of all the project goals.
+
+Item 2 can be found in the "ssvqe_ansatz_circuit" folder.
+
+Implemetation of all the hamiltonians which were used to test the algorithms is in "hamiltonians" folder.
+It should be noticed that in each notebook, one can find the hamiltonians implementation which were used in that notebook.
+
+All the other items can be found in "algorithms" folder.
+
+p.s. in each each folder, there is a ReadMe which will give you a brief introduction before diving to our code.
