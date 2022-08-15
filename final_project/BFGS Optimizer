@@ -1,0 +1,16 @@
+Here we will give a basic explanation of the method of operation of the BFGS optimizer.
+
+The Broyden, Fletcher, Goldfarb, and Shanno, or BFGS Algorithm, is a local search optimization algorithm.
+
+It is a type of second-order optimization algorithm, meaning that it makes use of the second-order derivative of an objective function and belongs to a class of algorithms referred to as Quasi-Newton methods that approximate the second derivative (called the Hessian) for optimization problems where the second derivative cannot be calculated. Hessian matrix or Hessian is a square matrix of second-order partial derivatives of a scalar-valued function, or scalar field. It describes the local curvature of a function of many variables.
+
+Our objective is to find the minimum of a cost function. In the case of VQE this is the expectation value of a hamiltonian which is calculated using a quantum circuit. For SSVQE, the cost function is based on two sub-cost functions, the first is being maximized and the second is being minimized. Both Weighted SSVQE for finding the k-th excited state and Weighted for finding all k excited states have cost function that depends the expectation values for orthogonal ansatz states with different weights.
+A simple approach to this is gradient descent — starting from some initial point, we slowly move downhill by taking iterative steps proportional to the negative gradient of the function at each point. The action of the Gradient Descent function depends solely on the parameter of the derivative of the function, hence categorizing this method as a first order optimization method. Although this method is a good way to optimize a given cost function, as we work with local and limited information at each step linearly, this leads to certain limitations to it. For more efficient method requiring and analyzing more information and parameters, i.e. a second order optimization method, just like Newton’s method, or better, Quasi Newton method.
+The essence of a Quasi Newton method is to be able to provide computational sustainability by reducing calculation and iteration costs at each optimization step. This is achieved by simply approximating the Hessian H in the iteration step instead of actually computing the whole exact value.
+
+The BFGS, generaly speaking, is the idea that we can take far less steps and converge much quicker to the minimum if we also consider the second-order behavior of the function, by computing the (inverse) Hessian at each step. 
+This comes at a cost, however, as calculating (and inverting) the Hessian takes a lot of resources.
+
+Its importent to note that, since the updates of the BFGS curvature matrix do not require matrix inversion, its computational complexity is only O(n^2), compared to O(n^3) in Newton's method.
+
+In conclusion, BFGS is simply iteratively making positive-definite preserving rank-two updates to the loss function’s approximate inverse Hessian, to efficiently find you its minimum.
