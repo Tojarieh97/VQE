@@ -1,0 +1,11 @@
+The algorithm SSVQE is used to find kth excited state energy of a hamiltonian in just two subsequent optimization processes. 
+The original research about the development of SSVQE is given in the second given paper. 
+
+But, can we do better? Yes, the research shows that using the weights as hyperparameters we can find the kth excited state energy in just single optimization process. This is a more generalised version of of SSVQE namely, Weighted SSVQE and it will be the center of our focus in this project. There are two variants of this algorithm:
+1) Weighted SSVQE to find kth excited state energy.
+
+2) Weighted SSVQE to find all energies upto kth excited state.
+
+Weighted SSVQE for kth excited state energy:
+This algorithm uses a single optimization process to find the kth excited state energy of a hamiltonian. In this algorithm the cost function which is to be minimized is shown below:
+Lw(θ) = w hϕk|U†(θ)HU(θ)|ϕki +Pk−1 j=0 hϕj |U†(θ)HU(θ)|ϕj i , where the weight w can be any value in (0,1).
